@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Vitals</title>
+
+    <script>
+        (function (obj) {
+            ue.game = {};
+            ue.game.callevent = function (name, ...args) {
+                if (typeof name != "string") {
+                    return;
+                }
+
+                if (args.length == 0) {
+                    obj.callevent(name, "")
+                }
+                else {
+                    let params = []
+                    for (let i = 0; i < args.length; i++) {
+                        params[i] = args[i];
+                    }
+                    obj.callevent(name, JSON.stringify(params));
+                }
+            };
+        })(ue.game);
+        CallEvent = ue.game.callevent;
+    </script>
+    <style>
+        .container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            height: 50px;
+            display: flex;
+        }
+
+        .container-vitals {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .percent {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            text-shadow:
+                -1px -1px 0 #262626,
+                1px -1px 0 #262626,
+                -1px 1px 0 #262626,
+                1px 1px 0 #262626;
+        }
+
+        img {
+            opacity: 0;
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-vitals">
+            <img src="health.png" id="health">
+            <span class="percent" id="health-pourcentage"></span>
+        </div>
+        <div class="container-vitals">
+            <img src="hunger.png" id="hunger">
+            <span class="percent" id="hunger-pourcentage"></span>
+        </div>
+        <div class="container-vitals">
+            <img src="thirst.png" id="thirst">
+            <span class="percent" id="thirst-pourcentage"></span>
+        </div>
+    </div>
+
+    <script>
+        function SetVitals(health, hunger, thirst, menuIsOpen)  {
+            SetVital('health', health, menuIsOpen)
+            SetVital('hunger', hunger, menuIsOpen)
+            SetVital('thirst', thirst, menuIsOpen)
+        }
+
+        function SetVital(vital, value, menuIsOpen) {
+            let $el = document.getElementById(vital);
+            let $percentEl = document.getElementById(vital + '-pourcentage');
+
+            $percentEl.innerText = Math.round(value);
+
+            if (value > 40)
+                $percentEl.style.color = "#ececec";
+            if (value > 20 && value <= 40)
+                $percentEl.style.color = "#ffd000";
+            if (value > 10 && value <= 20)
+                $percentEl.style.color = "#ff7b00";
+            if (value >= 0 && value <= 10)
+                $percentEl.style.color = "#ff1100";
+
+            if (menuIsOpen == 1) {
+                $el.style.opacity = "1";
+                $percentEl.style.opacity = "0.9";
+            } else {
+                if (value > 50 && value <= 100) {
+                    $el.style.opacity = "0.0";
+                    $percentEl.style.opacity = "0.0";
+                } else {
+                    $el.style.opacity = "0.7";
+                    $percentEl.style.opacity = "0.9";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+	"author": "Onset RP Core Team",
+	"version": "0.1",
+	"server_scripts": [
+	],
+	"client_scripts": [
+        "c_timers.lua",
+        "vitals/client.lua",
+        "speaking/client.lua"
+    ],
+    "files": [
+        "vitals/ui/health.png",
+        "vitals/ui/hunger.png",
+        "vitals/ui/thirst.png",
+        "vitals/ui/index.html",
+        "speaking/ui/speaking.png",
+        "speaking/ui/index.html"
+    ]
+}
