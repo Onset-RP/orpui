@@ -35,4 +35,4 @@ function showSpeakingHud()
 end
 
 AddFunctionExport("hideSpeakingHud", hideSpeakingHud)
-AddFunctionExport("showSpeakingHudHud", showSpeakingHud)
+AddFunctionExport("showSpeakingHud", showSpeakingHud)
