@@ -1,6 +1,6 @@
 ## Functions
 
-`showVitalsHud()`
-`hideVitalsHug()`
-`showSpeakingHud()`
-`hideSpeakingHud()`
+* `showVitalsHud()`
+* `hideVitalsHug()`
+* `showSpeakingHud()`
+* `hideSpeakingHud()`
